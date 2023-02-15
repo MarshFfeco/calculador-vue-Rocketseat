@@ -10,9 +10,13 @@
       v-for="lista in listas"
       :key="lista.keyValue"
       :key-value="lista.keyValue"
-      :class-button="lista.classButton"    
+      :class-button="lista.classButton"   
+      :is-img="lista.isImg" 
     >
-      <template #default>
+      <template
+        v-if="!lista.isImg"
+        #default
+      >
         {{ lista.keyValue }}
       </template>
     </KeyButton>

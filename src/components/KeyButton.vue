@@ -10,6 +10,11 @@
             type: String,
             required: false,
             default: ''
+        },
+        isImg: {
+            type: Boolean,
+            required: false,
+            default: false
         }
     })
 
@@ -21,12 +26,25 @@
             ]
         }
     })
+
+    const image = computed({
+        get() {
+            return `/src/assets/${props.keyValue}`
+        }
+    })
 </script>
 
 <template>
-  <div :class="[valueClass]">
-    <p><slot /></p>
-  </div>
+  <button :class="[valueClass]">
+    <p v-if="isImg === false">
+      <slot />
+    </p>
+    <img
+      v-else-if="isImg === true"
+      :src="image"
+      alt="Button Image"
+    >
+  </button>
 </template>
 
 <style scoped>
@@ -50,6 +68,15 @@
 
         cursor: pointer;
     }
+
+    .button:active {
+        box-shadow: none;
+    }
+
+    .button p {
+        font-size: 24px;
+    }
+
     .button-special {
         background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0.01%, rgba(255, 255, 255, 0.05) 100%), #462878;
 

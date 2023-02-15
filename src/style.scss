@@ -1,13 +1,25 @@
 $background: #807ECE;
 
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 400;
 }
 
 body {
   background-color: $background;
+}
+
+button { 
+  border: none;
+  appearance: none;
+  background: none;
 }
 
 #container {
