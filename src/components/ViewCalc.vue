@@ -1,24 +1,36 @@
 <script setup>
+    import { computed } from 'vue';
+    import { resultCalc } from '../store/index.js'
+
     import ViewCalcSto from './ViewCalcSto.vue';
     import ViewResult from './ViewResult.vue';
+
+    const expression = resultCalc()
+
+    const getNumber = computed({
+      get() { return  expression.getExpression }
+    })
+    const getHistoc = computed({
+      get() { return expression.getHistoric }
+    })
 </script>
 
 <template>
   <div id="calc">
     <ViewCalcSto>
       <template #default>
-        1 + 1
+        {{ getHistoc }}
       </template>
     </ViewCalcSto>
     <ViewResult>
       <template #default>
-        2
+        {{ getNumber }}
       </template>
     </ViewResult>
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
     #calc {
         width: 288px;
         height: 86px;

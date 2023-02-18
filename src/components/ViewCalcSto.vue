@@ -6,7 +6,7 @@
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
     #stories {
         width: 248px;
         height: 28px;

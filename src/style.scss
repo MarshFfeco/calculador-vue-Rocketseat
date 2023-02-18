@@ -12,6 +12,23 @@ $background: #807ECE;
   font-weight: 400;
 }
 
+/* width */
+::-webkit-scrollbar {
+  height: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #2D2A37;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $background;
+  border-radius: 10px;
+}
+
+
 body {
   background-color: $background;
 }

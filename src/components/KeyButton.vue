@@ -15,8 +15,15 @@
             type: Boolean,
             required: false,
             default: false
+        },
+        imageUrl: {
+            type: String,
+            required: false,
+            default : ''
         }
     })
+
+    const emit = defineEmits(['update'])
 
     const valueClass = computed({
         get() {
@@ -27,15 +34,24 @@
         }
     })
 
+    const getValue = computed({
+        get() {
+            return props.keyValue
+        }
+    })
+
     const image = computed({
         get() {
-            return `/src/assets/${props.keyValue}`
+            return `/src/assets/${props.imageUrl}`
         }
     })
 </script>
 
 <template>
-  <button :class="[valueClass]">
+  <button 
+    :class="[valueClass]"
+    @click="emit('update', getValue)"
+  >
     <p v-if="isImg === false">
       <slot />
     </p>
@@ -47,7 +63,7 @@
   </button>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
     .button {
         width: 64px;
         height: 64px;
@@ -67,16 +83,15 @@
         inset 0px 2px 3px rgba(255, 255, 255, 0.06);
 
         cursor: pointer;
-    }
 
-    .button:active {
-        box-shadow: none;
-    }
+        &:active {
+            box-shadow: none;
+        }
 
-    .button p {
-        font-size: 24px;
+        p {
+            font-size: 24px;
+        }
     }
-
     .button-special {
         background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0.01%, rgba(255, 255, 255, 0.05) 100%), #462878;
 
